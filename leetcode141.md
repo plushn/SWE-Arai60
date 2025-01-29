@@ -106,12 +106,4 @@ class Solution(object):
 - 1回目 10分
 - 2回目 4分
 - 3回目 3分
-
-
-お疲れ様です。141.Linked List Cycle を解きました。
-初めての提出になります。
-どうぞよろしくお願いいたします。
-問題：https://leetcode.com/problems/linked-list-cycle/description/
-PR：https://github.com/plushn/SWE-Arai60/blob/main/leetcode141
-
-言語：Python
+- 
