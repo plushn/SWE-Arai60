@@ -41,14 +41,14 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        visited_set = set()
+        visited_node = set()
         cur = head
         
         while cur and cur.next:
-            if cur in visited_set:
+            if cur in visited_node:
                 return True
 
-            visited_set.add(cur)
+            visited_node.add(cur)
             cur = cur.next
 
         return False
