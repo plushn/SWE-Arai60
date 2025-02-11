@@ -6,6 +6,8 @@
 
 ## Step2
 
+- 連続する2変数を用意して比較する。
+  
 ```python
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -25,9 +27,26 @@ class Solution:
         return head
 ```
 
+- 他の解答では、上の解答のwhileの条件に同値かどうか比較していた。
+- nxt_node = cur_node.next がなくなるため if head is None の処理が不要になる。(head=NoneだとNone.nextがAtributeErrorになる)
+
+```python
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        node = head
+
+        while node:
+            while node.next and node.val == node.next.val:
+                node.next = node.next.next
+            node = node.next
+
+        return head
+```
+
 ## Step3
 
-- 時間の余裕ができてきたのでもう少し簡略化して解くペース上げていきたいです。
+- 今回も解けなかった。
+- 時間の余裕ができてきたのでもう少し解くペース上げていきたいです。
 - 1回目 7分
 - 2回目 3分
 - 3回目 2分
