@@ -36,6 +36,7 @@ class Solution:
 ## Step2
 
 - 辞書を用いて処理を一般化した。
+- else: continue を入れるか省略するか迷いましたが、今回は省略しました。
 
 ```python
 from collections import deque
@@ -49,6 +50,8 @@ class Solution:
                 deq.append(char)
             elif len(deq) == 0 or hash_table[deq.pop()] != char:
                 return False
+            #else:
+                #continue
         
         if len(deq) == 0:
             return True
@@ -56,7 +59,7 @@ class Solution:
             return False
 ```
 
-- dueの最初に番兵を使ってみる。
+- queの最初に番兵を使ってみる。
 
 ```python
 from collections import deque
