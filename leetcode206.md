@@ -33,9 +33,6 @@ class Solution:
 # 修正後
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if head is None or head.next is None:
-            return head
-        
         # 初期値を修正
         current_node = None
         next_node = head
@@ -52,7 +49,7 @@ class Solution:
 
 ## Step2
 
-- step1のwhile内を1行に修正。個人的にはstep1が好みです。
+- step1のwhile内を1行に修正。個人的には3変数の対応がわかりにくいのでstep1が好みです。
 
 ```python
 # 繋ぎ変える
@@ -100,7 +97,7 @@ class Solution:
             result_node = result_node.next
         
         return result
-```l
+```
 
 - 再帰
 - 再帰は苦手意識がありますが、シンプルでわかりやすい気がします。
