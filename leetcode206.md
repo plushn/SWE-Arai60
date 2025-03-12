@@ -38,7 +38,7 @@ class Solution:
         next_node = head
         
         while next_node:
-            dummy_node = next_node.next
+            dummy_node = next_node.nexth
             next_node.next = current_node
 
             current_node = next_node
@@ -125,9 +125,10 @@ class Solution:
         if head is None or head.next is None:
             return head
 
-        result = self.reverseList(head.next)
-        head.next.next = head
+        tail = head.next
         head.next = None
+        result = self.reverseList(tail)
+        tail.next = head
 
         return result
 ```
@@ -135,7 +136,7 @@ class Solution:
 ## Step3
 
 - 今回は色々な方法を試してみたが、最初に書いた繋ぎ変えるのが一番好きでした。
-- 解き直しは苦手な再帰で。
+- 解き直しは苦手な再帰で。selfを忘れやすいので注意する。
 - 1回目: 8分
 - 2回目: 7分
 - 3回目: 4分
