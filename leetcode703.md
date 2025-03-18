@@ -46,7 +46,7 @@ class KthLargest:
 
 ## Step2
 
-- scoresではk番目までのスコアであることがわからないためtop_k_scoresに変更
+- scoresではk番目までのスコアであることがわからないためtop_k_scoresに変更。top_k_scoresという変数名は思いつきませんでした。
 - numsが破壊されないようにコピーした。deepcopyだと参照ではなくコピーを生成するらしい。他にいい方法はないだろうか。
 
 ```python
