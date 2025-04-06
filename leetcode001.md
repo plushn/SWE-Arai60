@@ -40,6 +40,7 @@ class Solution:
 
 - enumerateを使用した。解が存在しない例外にも対応。
 - numsが空の場合やtargetが負の場合でも問題なさそう。
+- [エラーと例外](https://docs.python.org/dev/tutorial/errors.html)を読みました。
 
 ```python
 from collections import defaultdict
@@ -53,7 +54,7 @@ class Solution:
                 return [index, num_to_index[complement]]
             num_to_index[num] = index
         # 制約上問題ないが,解が存在しないとき
-        return None
+        raise ValueError
 ```
 
 ## Step3
