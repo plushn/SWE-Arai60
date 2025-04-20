@@ -33,23 +33,26 @@ class Solution:
 ### splitやreplaceで分解
 
 - localとdomainを分離[splitやreplace](https://docs.python.org/ja/3/library/stdtypes.html#str.split)で分解する。
+- これは入力されるサイトで弾かれる処理になるかもしれないが、@がない場合を考慮した。
 
 ```python
 class Solution:
     def numUniqueEmails(self, emails: list[str]) -> int:
         unique_addresses = set()
         for email in emails:
+            if "@" not in email:
+                raise ValueError(f" {email}is not a valid email address")
             local, domain = email.split("@")
             local = local.split("+")[0]
             local = local.replace(".", "")
-            unique_addresses.add(local + "@" + domain)
+            unique_addresses.add("".join([local, "@", domain]))
         return len(unique_addresses)
 ```
 
 ### 正規表現
 
 - [正規表現](https://docs.python.org/ja/3/library/re.html#re.sub)を知らなかったためドキュメントを確認した。
-- 正規表現にもsplitはあるようだが、今回は他の実装例を参考にしてみる。
+- 正規表現にもsplitはあるようだが、今回は他の実装例を参考にsubを使用した。
 - [f-string](https://docs.python.org/ja/3/reference/lexical_analysis.html#formatted-string-literals)
 
 ```python
