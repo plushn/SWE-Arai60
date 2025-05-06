@@ -43,8 +43,7 @@ class Solution:
                 directions = [(1, 0), (0, 1)]
                 for dr, dc in directions:
                     next_r, next_c = r + dr, c + dc
-                    if (0 <= next_r < row and
-                        0 <= next_c < col and
+                    if (0 <= next_r < row and 0 <= next_c < col and \
                         grid[next_r][next_c] == '1'):
                         neighbor_index = next_r * col + next_c
                         if uf.union(current_index, neighbor_index):
