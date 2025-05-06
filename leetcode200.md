@@ -138,8 +138,10 @@ class Solution:
 
 ### UnionFind
 
-- union findという方法の解答もあるようだが、正直完全には理解ができなかった。
-- 素集合を結合していくイメージは理解できたが、こちらに関してはまた後日取り組もうと思う。
+- union findという方法で解いている方もいた。自力で実装できるレベルでは理解できておらず、後日3回自力で実装できるように練習したい。
+  - island_gridをgrid総数`row * col`で初期化
+  - gridがWATERの場合、islands_countを-1する。
+  - gridがISLANDでその隣接gridもISLANDの場合、結合してislands_countを-1する。
 
 ## Step3
 
