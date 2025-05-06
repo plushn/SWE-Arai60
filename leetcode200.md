@@ -70,7 +70,8 @@ class Solution:
             current_r, current_c = islands.pop()
             for d_r, d_c in directions:
                 next_r, next_c = current_r + d_r, current_c + d_c
-                if 0 <= next_r < row and 0 <= next_c < col and (next_r, next_c) not in visited:
+                if 0 <= next_r < row and 0 <= next_c < col and
+                    (next_r, next_c) not in visited:
                     visited.add((next_r, next_c))
                     islands.append((next_r, next_c))
                     isIsland(next_r, next_c)
@@ -114,7 +115,8 @@ class Solution:
                 current_r, current_c = islands.popleft()
                 for d_r, d_c in directions:
                     next_r, next_c = current_r + d_r, current_c + d_c
-                    if 0 <= next_r < row and 0 <= next_c < col and (next_r, next_c) not in visited:
+                    if 0 <= next_r < row and 0 <= next_c < col and
+                        (next_r, next_c) not in visited:
                         visited.add((next_r, next_c))
                         islands.append((next_r, next_c))
 
