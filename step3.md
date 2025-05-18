@@ -6,7 +6,7 @@ class Solution:
         WATER = 0
         max_row, max_col = len(grid), len(grid[0])
 
-        def _get_area(r: int, c: int) -> int:
+        def get_area(r: int, c: int) -> int:
             if not(0 <= r < max_row and 0 <= c < max_col):
                 return 0
             if not((r, c) not in visited and grid[r][c] == ISLAND):
@@ -14,10 +14,10 @@ class Solution:
             visited.add((r, c))
             
             area = 1
-            area += _get_area(r + 1, c)
-            area += _get_area(r, c + 1)
-            area += _get_area(r - 1, c)
-            area += _get_area(r, c - 1)
+            area += get_area(r + 1, c)
+            area += get_area(r, c + 1)
+            area += get_area(r - 1, c)
+            area += get_area(r, c - 1)
 
             return area
 
@@ -25,7 +25,7 @@ class Solution:
         for r in range(max_row):
             for c in range(max_col):
                 if grid[r][c] == ISLAND:
-                    max_area = max(max_area, _get_area(r, c))
+                    max_area = max(max_area, get_area(r, c))
         return max_area
 ```
 
@@ -37,7 +37,7 @@ class Solution:
         ISLAND = 1
         max_r, max_c = len(grid), len(grid[0])
 
-        def _get_island_area(r: int, c: int) -> int:
+        def get_island_area(r: int, c: int) -> int:
             if not(0 <= r < max_r and 0 <= c < max_c):
                 return 0
             if not((r, c) not in visited and grid[r][c] == ISLAND):
@@ -45,17 +45,17 @@ class Solution:
             visited.add((r, c))
             
             area = 1
-            area += _get_island_area(r + 1, c)
-            area += _get_island_area(r, c + 1)
-            area += _get_island_area(r - 1, c)
-            area += _get_island_area(r, c - 1)
+            area += get_island_area(r + 1, c)
+            area += get_island_area(r, c + 1)
+            area += get_island_area(r - 1, c)
+            area += get_island_area(r, c - 1)
             return area
         
         max_area = 0
         for r in range(max_r):
             for c in range(max_c):
                 if grid[r][c] == ISLAND:
-                    max_area = max(max_area, _get_island_area(r, c))
+                    max_area = max(max_area, get_island_area(r, c))
         return max_area
 ```
 
@@ -69,7 +69,7 @@ class Solution:
         ISLAND = 1
         visited = set()
 
-        def _get_island_area(start_r: int, start_c: int) -> int:
+        def get_island_area(start_r: int, start_c: int) -> int:
             islands = deque()
             islands.append((start_r, start_c))
             visited.add((start_r, start_c))
@@ -94,6 +94,6 @@ class Solution:
         for r in range(max_r):
             for c in range(max_c):
                 if grid[r][c] == ISLAND and (r, c) not in visited:
-                    max_area = max(max_area, _get_island_area(r, c))
+                    max_area = max(max_area, get_island_area(r, c))
         return max_area
 ```
