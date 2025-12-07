@@ -12,17 +12,17 @@ class Solution:
         if root is None:
             return 0
             
-        queue = deque([(root, 1)]) # (node, depth)
+        nodes_and_depth = deque([(root, 1)]) # (node, depth)
         max_depth = 1
 
-        while queue:
-            node, depth = queue.popleft()
+        while nodes_and_depth:
+            node, depth = nodes_and_depth.popleft()
             max_depth = max(max_depth, depth)
 
             if node.left:
-                queue.append((node.left, depth + 1))
+                nodes_and_depth.append((node.left, depth + 1))
             if node.right:
-                queue.append((node.right, depth + 1))
+                nodes_and_depth.append((node.right, depth + 1))
         return max_depth
 ```
 
@@ -40,33 +40,24 @@ n: rootの要素数
   - Pythonでは再帰の深さ制限に注意が必要。
 
 ```python
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if not root:
+        if root is None:
             return 0
         
-        depth = 0
-        nodes_and_depth = collections.deque([root])
+        max_depth = 1
+        node_and_depth = deque([(root, 1)])
 
-        while nodes_and_depth:
-            depth += 1
-            n = len(nodes_and_depth)
-            
-            for _ in range(n):
-                node = nodes_and_depth.popleft()
+        while node_and_depth:
+            node, depth = node_and_depth.popleft()
+            max_depth = max(depth, max_depth)
 
-                if node.left:
-                    nodes_and_depth.append(node.left)
-                if node.right:
-                    nodes_and_depth.append(node.right)
+            if node.left:
+                node_and_depth.append((node.left, depth + 1))
+            if node.right:
+                node_and_depth.append((node.right, depth + 1))
         
-        return depth
+        return max_depth
 ```
 
 ## Step3
@@ -99,18 +90,18 @@ class Solution:
         if root is None:
             return 0
         
-        queue = deque([root])
+        nodes_and_depth = deque([root])
         depth = 0
 
-        while queue:
+        while nodes_and_depth:
             depth += 1
-            for _ in range(len(queue)):
-                node = queue.popleft()
+            for _ in range(len(nodes_and_depth)):
+                node = nodes_and_depth.popleft()
 
                 if node.left:
-                    queue.append(node.left)
+                    nodes_and_depth.append(node.left)
                 if node.right:
-                    queue.append(node.right)
+                    nodes_and_depth.append(node.right)
 
         return depth
 ```
