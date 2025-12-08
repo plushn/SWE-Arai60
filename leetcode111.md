@@ -85,10 +85,12 @@ class Solution:
                     nodes_in_level.append(node.right)
 ```
 
+特にメリットは無さそうですが、個人的にはdepthを最初に更新する方が好みでした。
+
 ```python
 from collections import deque
 
-class Solution:
+class Solution:クラス 解決策:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
