@@ -52,7 +52,7 @@ class Solution:
                 parent.left = child
             else:
                 parent.right = child
-            return (child, (start, mid - 1), (mid + 1, end)) #(child, left_range, right_range)
+            return child, (start, mid - 1), (mid + 1, end)
 
         if not nums:
             return None
