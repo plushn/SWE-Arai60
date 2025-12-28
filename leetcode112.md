@@ -66,8 +66,10 @@ class Solution:
         if root.left is None and root.right is None:
             return targetSum == 0
         
-        return self.hasPathSum(root.left, targetSum) or \
-                self.hasPathSum(root.right, targetSum)
+        return (
+            self.hasPathSum(root.left, targetSum)
+            or self.hasPathSum(root.right, targetSum)
+        )
 ```
 
 ## Step3
