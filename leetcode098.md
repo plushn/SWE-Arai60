@@ -103,19 +103,14 @@ class Solution:
         
         nodes_in_current_level = deque([(root, -math.inf, math.inf)]) # (node, minimum limit, maximum limit)
         while nodes_in_current_level:
-            nodes_in_next_level = deque()
+            node, low, high = nodes_in_current_level.popleft()
 
-            for _ in range(len(nodes_in_current_level)):
-                node, low, high = nodes_in_current_level.popleft()
-                if not (low < node.val < high):
-                    return False
-                if node.left is not None:
-                    nodes_in_next_level.append((node.left, low, node.val))
-                if node.right is not None:
-                    nodes_in_next_level.append((node.right, node.val, high))
+            if not (low < node.val < high):
+                return False
+            if node.left is not None:
+                nodes_in_current_level.append((node.left, low, node.val))
+            if node.right is not None:
+                nodes_in_current_level.append((node.right, node.val, high))
 
-            nodes_in_current_level = nodes_in_next_level
-                
-        
         return True
 ```
