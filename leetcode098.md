@@ -84,13 +84,9 @@ class Solution:
             if node.right is not None:
                 yield from generate_inorder(node.right)
 
-        node_iter = iter(generate_inorder(root))
-        previous_val = next(node_iter).val
-        
-        for node in node_iter:
-            if node.val <= previous_val:
+        for previous, current in itertools.pairwise(generate_inorder(root)):
+            if current.val <= previous.val:
                 return False
-            previous_val = node.val
 
         return True
 ```
