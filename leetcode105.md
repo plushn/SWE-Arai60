@@ -8,7 +8,7 @@ inorder,preorderという用語がわからなかった。[参考](https://engin
 - inorder (中間順巡回 / 中順): 現在のnodeを中間(In)に処理する。(左 → 根 → 右)
 - postorder (後行順巡回 / 後順): 現在のnodeを最後(Post)に処理する。(左 → 右 → 根)
 
-grobalとnonlocalの違いを復讐
+grobalとnonlocalの違いを復習
 
 - [global](https://docs.python.org/3/reference/simple_stmts.html#the-global-statement): glebalスコープを操作する場合
 - [nonlocal](https://docs.python.org/3/reference/simple_stmts.html#the-nonlocal-statement): 親関数のスコープを操作する場合
@@ -60,7 +60,7 @@ class Solution:
 
 ### スタック+iterartor
 
-スタックで実装する場合は、rightー>leftの順に積んでいかなければいけないことに注意する。
+スタックで実装する場合は、rightー>leftの順に積んでいかなければいけないことに注意する。(スタックでは取り出す順番がleft->rightになっているので)
 
 ```python
 from typing import Optional, List
@@ -70,19 +70,19 @@ class Solution:
         inorder_to_index = {val: i for i, val in enumerate(inorder)}
         preorder_iter = iter(preorder)
         root = TreeNode()
-        frontiers = [(root, 0, len(inorder) - 1)]  # (node, left, right)
+        frontier = [(root, 0, len(inorder) - 1)]  # (node, left, right)
         
-        while frontiers:
-            node, left, right = frontiers.pop()
+        while frontier:
+            node, left, right = frontier.pop()
             node_val = next(preorder_iter)
             inorder_index = inorder_to_index[node_val]
             node.val = node_val
             if inorder_index < right:
                 node.right = TreeNode()
-                frontiers.append((node.right, inorder_index + 1, right))
+                frontier.append((node.right, inorder_index + 1, right))
             if left < inorder_index:
                 node.left = TreeNode()
-                frontiers.append((node.left, left, inorder_index - 1))
+                frontier.append((node.left, left, inorder_index - 1))
                 
         return root
 ```
